@@ -10,6 +10,7 @@ export default function AppTabs() {
 
   return (
     <NativeTabs
+      minimizeBehavior="onScrollDown"
       iconColor={{
         default: colors.tabIconDefault,
         selected: colors.tabIconSelected,
@@ -54,13 +55,16 @@ export default function AppTabs() {
       <NativeTabs.BottomAccessory>
         <View
           style={{
+            height: 50, // FIX: Use a hardcoded height instead of flex: 1
+            width: "100%",
             justifyContent: "center",
             alignItems: "center",
-            flex: 1,
-            backgroundColor: "pink",
+            backgroundColor: "transparent", // Let the Liquid Glass show through
           }}
         >
-          <Text style={{ textAlign: "center", color: "#16ba14" }}>
+          <Text
+            style={{ textAlign: "center", color: "#1438ba", fontWeight: "600" }}
+          >
             Your text here
           </Text>
         </View>
