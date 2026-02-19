@@ -1,12 +1,19 @@
-import { NativeTabs } from "expo-router/unstable-native-tabs";
 import React from "react";
+import { NativeTabs } from "expo-router/unstable-native-tabs";
 import { Text, useColorScheme, View } from "react-native";
-
+import { useSegments } from "expo-router"; // Add this
 import { Colors } from "@/constants/theme";
 
 export default function AppTabs() {
   const scheme = useColorScheme();
   const colors = Colors[scheme === "unspecified" ? "light" : scheme];
+
+  // 1. Get the current route segments
+  const segments = useSegments() as string[]; // Typecast to string[] for easier handling
+  
+  // 2. Check if the "search" folder is active
+  // Since your path is (tabs)/search/index, segments will include "search"
+  const isSearchPage = segments.includes("search");
 
   return (
     <NativeTabs
@@ -52,23 +59,22 @@ export default function AppTabs() {
         />
       </NativeTabs.Trigger>
 
-      <NativeTabs.BottomAccessory>
-        <View
-          style={{
-            height: 50, // FIX: Use a hardcoded height instead of flex: 1
-            width: "100%",
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "transparent", // Let the Liquid Glass show through
-          }}
-        >
-          <Text
-            style={{ textAlign: "center", color: "#1438ba", fontWeight: "600" }}
-          >
-            Your text here
-          </Text>
-        </View>
-      </NativeTabs.BottomAccessory>
+      <NativeTabs.Trigger name="search" role="search">
+        <NativeTabs.Trigger.Label>Search</NativeTabs.Trigger.Label>
+        <NativeTabs.Trigger.Icon
+          src={require("@/assets/images/tabIcons/search.png")}
+        />
+      </NativeTabs.Trigger>
+
+      {!isSearchPage && (
+        <NativeTabs.BottomAccessory>
+          <View style={{ height: 50, width: "100%", justifyContent: "center", alignItems: "center" }}>
+            <Text style={{ textAlign: "center", color: "#1438ba", fontWeight: "600" }}>
+              Your text here
+            </Text>
+          </View>
+        </NativeTabs.BottomAccessory>
+      )}
     </NativeTabs>
   );
 }

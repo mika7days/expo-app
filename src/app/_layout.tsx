@@ -1,4 +1,4 @@
-import { Stack } from 'expo-router';
+import { Slot } from 'expo-router'; // Use Slot instead of Stack
 import { useColorScheme } from 'react-native';
 import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
 import { AnimatedSplashOverlay } from '@/components/animated-icon';
@@ -8,19 +8,9 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      {/* Global overlay for the whole app */}
       <AnimatedSplashOverlay />
-      
-      <Stack screenOptions={{ headerShown: false }}>
-        {/* The (tabs) group is your main entry point */}
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        
-        {/* Any screens outside (tabs) will automatically hide the tab bar */}
-        <Stack.Screen 
-          name="modal" 
-          options={{ presentation: 'modal', headerShown: true }} 
-        />
-      </Stack>
+      {/* Slot renders the first child (the (tabs) folder) without an extra header */}
+      <Slot /> 
     </ThemeProvider>
   );
 }
