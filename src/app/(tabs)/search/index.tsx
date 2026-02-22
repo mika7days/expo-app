@@ -1,12 +1,12 @@
 // src/app/(tabs)/search/index.tsx
-import { ScrollView, Text, View, StyleSheet } from 'react-native';
-import { Stack } from 'expo-router';
+import { Stack } from "expo-router";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export default function SearchIndex() {
   return (
     <View style={{ flex: 1 }}>
       {/* 1. This tells the native Tab Bar to show the Search Input */}
-      <Stack.Screen 
+      <Stack.Screen
         options={{
           headerTitle: "Search",
           headerLargeTitle: true,
@@ -15,10 +15,10 @@ export default function SearchIndex() {
             placeholder: "Search Podcasts",
             autoFocus: true,
             hideWhenScrolling: false,
-          }
-        }} 
+          },
+        }}
       />
-      
+
       {/* OR use the specific SearchBar component from your doc: */}
       {/* <Stack.SearchBar placement="automatic" placeholder="Search" /> */}
 
@@ -27,7 +27,7 @@ export default function SearchIndex() {
           <Text style={styles.headerText}>Search Results</Text>
           {[...Array(30)].map((_, i) => (
             <View key={i} style={styles.item}>
-               <Text>Podcast Episode {i + 1}</Text>
+              <Text className="bg-red-400 text-2xl">List Item {i + 1}</Text>
             </View>
           ))}
         </View>
@@ -38,6 +38,6 @@ export default function SearchIndex() {
 
 const styles = StyleSheet.create({
   content: { padding: 20 },
-  headerText: { fontSize: 24, fontWeight: 'bold', marginBottom: 15 },
-  item: { padding: 15, borderBottomWidth: 1, borderBottomColor: '#eee' }
+  headerText: { fontSize: 24, fontWeight: "bold", marginBottom: 15 },
+  item: { padding: 15, borderBottomWidth: 1, borderBottomColor: "#eee" },
 });
