@@ -24,7 +24,6 @@ export default function SearchIndex() {
 
       <ScrollView contentInsetAdjustmentBehavior="automatic">
         <View style={styles.content}>
-          <Text style={styles.headerText}>Search Results</Text>
           {[...Array(30)].map((_, i) => (
             <View key={i} style={styles.item}>
               <Text className="bg-red-400 text-2xl">List Item {i + 1}</Text>

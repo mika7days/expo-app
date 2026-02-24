@@ -1,8 +1,8 @@
-import React from "react";
-import { NativeTabs } from "expo-router/unstable-native-tabs";
-import { Text, useColorScheme, View } from "react-native";
-import { useSegments } from "expo-router"; // Add this
 import { Colors } from "@/constants/theme";
+import { useSegments } from "expo-router"; // Add this
+import { NativeTabs } from "expo-router/unstable-native-tabs";
+import React from "react";
+import { Text, useColorScheme, View } from "react-native";
 
 export default function AppTabs() {
   const scheme = useColorScheme();
@@ -10,7 +10,7 @@ export default function AppTabs() {
 
   // 1. Get the current route segments
   const segments = useSegments() as string[]; // Typecast to string[] for easier handling
-  
+
   // 2. Check if the "search" folder is active
   // Since your path is (tabs)/search/index, segments will include "search"
   const isSearchPage = segments.includes("search");
@@ -68,10 +68,8 @@ export default function AppTabs() {
 
       {!isSearchPage && (
         <NativeTabs.BottomAccessory>
-          <View style={{ height: 50, width: "100%", justifyContent: "center", alignItems: "center" }}>
-            <Text style={{ textAlign: "center", color: "#1438ba", fontWeight: "600" }}>
-              Your text here
-            </Text>
+          <View className="h-full flex justify-center items-center">
+            <Text className="text-center text-xl">Bottom Accessory Bar</Text>
           </View>
         </NativeTabs.BottomAccessory>
       )}

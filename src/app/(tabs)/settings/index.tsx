@@ -16,11 +16,6 @@ export default function SettingsScreen() {
           headerLargeTitle: false, // Keeps the header small/compact
         }}
       />
-      <Stack.Toolbar placement="right">
-        <Stack.Toolbar.Button icon="square.and.arrow.up" onPress={() => {}} />
-        <Stack.Toolbar.Spacer />
-        <Stack.Toolbar.Button icon="trash" onPress={() => {}} />
-      </Stack.Toolbar>
 
       <Stack.Toolbar placement="left">
         <Stack.Toolbar.Menu icon="ellipsis.circle">
@@ -54,6 +49,12 @@ export default function SettingsScreen() {
             Delete
           </Stack.Toolbar.MenuAction>
         </Stack.Toolbar.Menu>
+      </Stack.Toolbar>
+
+      <Stack.Toolbar placement="right">
+        <Stack.Toolbar.Button icon="square.and.arrow.up" onPress={() => {}} />
+        <Stack.Toolbar.Spacer width={20} />
+        <Stack.Toolbar.Button icon="trash" onPress={() => {}} />
       </Stack.Toolbar>
 
       <ScrollView
